@@ -1,44 +1,241 @@
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+/* =========================================
+   PORTFOLIO — Style principal
+   Thème : Editorial sombre & épuré
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ---- Variables ---- */
+:root {
+  --bg:        #0d0d0d;
+  --surface:   #161616;
+  --border:    #2a2a2a;
+  --accent:    #e8c97e;       /* or doré */
+  --text:      #f0ece4;
+  --muted:     #7a7570;
+  --radius:    6px;
+  --font-title: 'Playfair Display', Georgia, serif;
+  --font-body:  'DM Sans', sans-serif;
+  --max-w:     900px;
 }
-h1 {
-    color: #333;
-    text-align: center;
+
+/* ---- Reset & base ---- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-header {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
+
+html {
+  scroll-behavior: smooth;
 }
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.7;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto auto;
+  grid-template-areas:
+    "nav"
+    "header"
+    "main"
+    "section"
+    "footer";
+}
+
+/* ---- Lien global ---- */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s, opacity 0.25s;
+  font-weight: 500;
+}
+
+a:hover {
+  border-color: var(--accent);
+  opacity: 0.85;
+}
+
+/* ============ NAV ============ */
 nav {
-    background-color: #f2f2f2;
-    padding: 10px;
+  grid-area: nav;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
 }
-nav a {
-    color: #333;
-    text-decoration: none;
-    margin: 0 10px;
+
+nav p {
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
 }
-nav a:hover {
-    text-decoration: underline;
+
+/* ============ HEADER ============ */
+header {
+  grid-area: header;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 5rem 2rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
+
+/* Ligne décorative derrière le header */
+header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 3rem;
+  background: var(--accent);
+  opacity: 0.6;
+}
+
+header h1,
+body > h1 {
+  font-family: var(--font-title);
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+header p {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 480px;
+  margin: 0 auto 1.5rem;
+}
+
+/* ============ H1 + P + A flottants (hors header) ============ */
+body > h1,
+body > p,
+body > a {
+  display: block;
+  max-width: var(--max-w);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 2rem;
+}
+
+body > h1 {
+  padding-top: 3rem;
+  font-family: var(--font-title);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+}
+
+body > p {
+  padding-top: 0.75rem;
+  color: var(--muted);
+}
+
+body > a {
+  margin-top: 1.25rem;
+  margin-bottom: 2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  color: var(--accent);
+  padding: 0.55rem 1.2rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  transition: background 0.25s, color 0.25s;
+  margin-left: 2rem;
+}
+
+body > a:hover {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+/* ============ MAIN ============ */
 main {
-    padding: 20px;
-    background-color: #f2f2f2;
-    margin-bottom: 20px;
-
+  grid-area: main;
+  max-width: var(--max-w);
+  width: 100%;
+  margin: 0 auto;
+  padding: 4rem 2rem;
 }
 
+main p {
+  font-size: 1rem;
+  color: var(--muted);
+  padding: 2rem;
+  background: var(--surface);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+/* ============ SECTION ============ */
 section {
-    margin-bottom: 20px;
-    padding: 20px;
-    background-color: #f2f2f2;
-    margin-bottom: 20px;
+  grid-area: section;
+  max-width: var(--max-w);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+section p {
+  padding: 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ============ FOOTER ============ */
+footer {
+  grid-area: footer;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 2rem;
+  text-align: center;
+}
+
+footer p {
+  font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ============ Responsive ============ */
+@media (max-width: 600px) {
+  body > a {
+    margin-left: 2rem;
+  }
+
+  header {
+    padding: 3.5rem 1.5rem 3rem;
+  }
+
+  main, section {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
 }
