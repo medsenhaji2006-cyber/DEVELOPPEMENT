@@ -25,3 +25,9 @@ button {
 button:hover {
   background-color: #4338ca;
 }
+@media (max-width: 600px) {
+  input, button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
