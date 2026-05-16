@@ -12,3 +12,13 @@ btn.addEventListener("click", function() {
     alert("Inscription réussie ! " + nom.value + " " + prenom.value + " " + email.value + " " + password.value);
   }
 });
+const users = JSON.parse(localStorage.getItem("users")) || [];
+users.push({
+  firstName: nom.value,
+  lastName: prenom.value,
+  email: email.value,
+  password: password.value
+});
+localStorage.setItem("users", JSON.stringify(users));
+alert("Inscription réussie ! " + nom.value + " " + prenom.value + " " + email.value + " " + password.value);
+
