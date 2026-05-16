@@ -9,6 +9,6 @@ btn.addEventListener("click", function() {
   if (nom.value === "" || prenom.value === "" || email.value === "" || password.value === "") {
     alert("Veuillez remplir tous les champs.");
   } else {
-    alert("Inscription réussie !");
+    alert("Inscription réussie ! " + nom.value + " " + prenom.value + " " + email.value + " " + password.value);
   }
 });
